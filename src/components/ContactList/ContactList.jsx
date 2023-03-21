@@ -4,7 +4,7 @@ import ContactListItem from "./ContactListItem";
 export default function ContactList({ contacts, filter, deleteContact }) {
   const list = filter
     ? contacts.filter(contact => contact.name.match(new RegExp(filter, 'gi')))
-    : [];
+    : contacts;
 
   return (
     <ul onClick={deleteContact}>
