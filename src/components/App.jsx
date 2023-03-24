@@ -41,6 +41,21 @@ export class App extends React.Component {
     }));
   };
 
+  componentDidMount() {
+    const storageContacts = localStorage.getItem('contacts');
+    if (storageContacts) {
+      try {
+        this.setState({ contacts: JSON.parse(storageContacts) });
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
+
   render() {
     return (
       <div className={css.container}>
